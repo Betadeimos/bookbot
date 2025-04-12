@@ -13,10 +13,18 @@ def count_words(contents):
 def count_characters(contents):
     dict_chars = {}
     for char in contents:
-        if char in dict_chars:
-            dict_chars[char] += 1
-        else:
-            dict_chars[char] = 1
-        
+        if char.isalpha(): 
+            if char in dict_chars:
+                dict_chars[char] += 1
+            else:
+                dict_chars[char] = 1        
     return dict_chars
     
+def sort_on(unsorted_dict):
+    def get_count(item):
+        return item[1]
+
+    chars_list = list(unsorted_dict.items()) 
+    chars_list.sort(reverse=True, key=get_count)
+    sorted_dict = dict(chars_list) 
+    return sorted_dict
